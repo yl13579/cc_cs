@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc_cs.demo.mapper.CodeMapper">
+    <resultMap id="Post" type="com.cc_cs.demo.entity.Code">
+        <id property="cid" column="cid"/>
+        <result property="rcode" column="rcode"/>
+        <result property="pcode" column="pcode"/>
+        <result property="source_url" column="source_url"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <select id="selectCodeByCid" resultMap="Post">
+        SELECT * FROM cs_code WHERE cid = #{cid}
+    </select>
+
+    <select id="getAllByType" resultMap="Post">
+        SELECT * FROM cs_code WHERE type = #{type}
+    </select>
+
+    <insert id="insertCode" parameterType="com.cc_cs.demo.entity.Code">
+        INSERT INTO cs_code(cid, rcode, pcode, source_url, type)
+        VALUES(#{cid}, #{rcode}, #{pcode}, #{source_url}, #{type})
+    </insert>
+
+    <update id="updateCode" parameterType="com.cc_cs.demo.entity.Code">
+        UPDATE cs_code SET rcode = #{rcode}, pcode = #{pcode}, source_url = #{source_url}, type = #{type}
+        WHERE cid = #{cid}
+    </update>
+
+    <delete id="deleteCode" parameterType="com.cc_cs.demo.entity.Code">
+        DELETE FROM cs_code WHERE cid = #{cid}
+    </delete>
+
+</mapper>

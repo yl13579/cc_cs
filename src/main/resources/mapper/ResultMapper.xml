@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc_cs.demo.mapper.ResultMapper">
+    <resultMap id="Post" type="com.cc_cs.demo.entity.Result">
+        <id property="rid" column="rid"/>
+        <result property="search_keyword" column="search_keyword"/>
+        <result property="result_code_id" column="result_code_id"/>
+        <result property="score" column="score"/>
+    </resultMap>
+
+    <select id="selectResultByRid" resultMap="Post">
+        SELECT * FROM cs_result
+    </select>
+
+    <insert id="insertResult" parameterType="com.cc_cs.demo.entity.Result">
+        INSERT INTO cs_result(rid, search_keyword, result_code_id, score)
+        VALUES(#{rid}, #{search_keyword}, #{result_code_id}, #{score})
+    </insert>
+
+    <update id="updateResult" parameterType="com.cc_cs.demo.entity.Result">
+        UPDATE cs_result
+        SET search_keyword = #{search_keyword}, result_code_id = #{result_code_id}, score = #{score}
+        WHERE rid = #{rid}
+    </update>
+
+    <delete id="deleteResultByRid" parameterType="java.lang.String">
+        DELETE FROM cs_result
+        WHERE rid = #{rid}
+    </delete>
+
+</mapper>
