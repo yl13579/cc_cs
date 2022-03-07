@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cc_cs.demo.mapper.ResultMapper">
-    <resultMap id="Post" type="com.cc_cs.demo.entity.Result">
+    <resultMap id="ResultMapper" type="com.cc_cs.demo.entity.Result">
         <id property="rid" column="rid"/>
         <result property="search_keyword" column="search_keyword"/>
         <result property="result_code_id" column="result_code_id"/>
